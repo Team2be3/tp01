@@ -30,7 +30,7 @@ private String prenomCLient;
 @Temporal(TemporalType.DATE)
 private Date dateNaissance;
 private String adresse;
-@OneToMany
+@OneToMany(mappedBy="client")
 private ArrayList<Compte> tabCompte=new ArrayList<Compte>();
 
 
