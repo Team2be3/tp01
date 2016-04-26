@@ -38,7 +38,7 @@ public class Operation {
 	@ManyToOne
 	private Compte compte;
 	@ManyToOne
-	private Employe employe;
+	private Employer employer;
 	
 	/* getEtSet */
 	public Long getIdOperation() {
@@ -65,11 +65,11 @@ public class Operation {
 	public void setCompte(Compte compte) {
 		this.compte = compte;
 	}
-	public Employe getEmploye() {
-		return employe;
+	public Employer getEmployer() {
+		return employer;
 	}
-	public void setEmploye(Employe employe) {
-		this.employe = employe;
+	public void setEmploye(Employer employe) {
+		this.employer = employe;
 	}
 		
 	/* constructors */
