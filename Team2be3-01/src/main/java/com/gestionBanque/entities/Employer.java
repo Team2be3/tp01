@@ -25,11 +25,11 @@ public class Employer {
 private Long idEmployer;
 private String nomEmployer;
 @OneToMany
-private ArrayList<Operation> tabOperation=new ArrayList<>();
+private ArrayList<Operation> tabOperation=new ArrayList<Operation>();
 @OneToMany
-private ArrayList<Compte> tabCompte=new ArrayList<>();
+private ArrayList<Compte> tabCompte=new ArrayList<Compte>();
 @ManyToMany
-private ArrayList<Groupe> tabGroupe=new ArrayList<>();
+private ArrayList<Groupe> tabGroupe=new ArrayList<Groupe>();
 
 public Long getIdEmployer() {
 	return idEmployer;

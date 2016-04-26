@@ -31,7 +31,7 @@ private String prenomCLient;
 private Date dateNaissance;
 private String adresse;
 @OneToMany
-private ArrayList<Compte> tabCompte=new ArrayList<>();
+private ArrayList<Compte> tabCompte=new ArrayList<Compte>();
 
 
 
