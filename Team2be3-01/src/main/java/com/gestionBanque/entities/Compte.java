@@ -13,7 +13,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /*Auteur:Boumaza Alex
  * nom Projet :2be3
@@ -32,12 +36,17 @@ public class Compte implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idCompte;
 	private double solde;
+	@Temporal(TemporalType.DATE)
 	private Date dateCreation;
 	/* association */
 	@ManyToOne
-	List<Employer> ListE = new ArrayList<Employer>();
+	@JoinColumn(name="IdEmployer")
+	private Employer employer;
 	@ManyToOne
-	List<Client> ListC = new ArrayList<Client>();
+	@JoinColumn(name="IdClient")
+	private Client client;
+	@OneToMany(mappedBy="compte")
+	private List<Operation> tabOperation= new ArrayList<Operation>();
 
 	/* getEtSet */
 	public Long getIdCompte() {
@@ -62,6 +71,30 @@ public class Compte implements Serializable {
 
 	public void setDateCreation(Date dateCreation) {
 		this.dateCreation = dateCreation;
+	}
+
+	public Employer getEmployer() {
+		return employer;
+	}
+
+	public void setEmployer(Employer employer) {
+		this.employer = employer;
+	}
+
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
+	}
+
+	public List<Operation> getTabOperation() {
+		return tabOperation;
+	}
+
+	public void setTabOperation(List<Operation> tabOperation) {
+		this.tabOperation = tabOperation;
 	}
 
 	/* constructors */

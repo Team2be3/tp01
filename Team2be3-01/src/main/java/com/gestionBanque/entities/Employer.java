@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
@@ -24,11 +25,12 @@ public class Employer {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 private Long idEmployer;
 private String nomEmployer;
-@OneToMany
+@OneToMany(mappedBy="employe")
 private ArrayList<Operation> tabOperation=new ArrayList<Operation>();
-@OneToMany
+@OneToMany(mappedBy="employer")
 private ArrayList<Compte> tabCompte=new ArrayList<Compte>();
 @ManyToMany
+@JoinTable(name="Emp_Gro")
 private ArrayList<Groupe> tabGroupe=new ArrayList<Groupe>();
 
 public Long getIdEmployer() {

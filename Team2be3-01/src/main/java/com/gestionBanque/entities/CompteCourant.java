@@ -40,9 +40,4 @@ public class CompteCourant extends Compte {
 		// TODO Auto-generated constructor stub
 	}
 
-	public CompteCourant(double solde, Date dateCreation) {
-		super(solde, dateCreation);
-		// TODO Auto-generated constructor stub
-	}
-
 }

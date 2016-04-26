@@ -28,7 +28,7 @@ public class Groupe {
 	private String nomGroupe;
 	
 	/* association */
-	@ManyToMany
+	@ManyToMany(mappedBy="tabGroupe")
 	List<Employer> tabEmployer= new ArrayList<Employer>();
 
 	/* getEtSet */

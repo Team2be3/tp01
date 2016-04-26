@@ -18,6 +18,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -36,9 +37,11 @@ public class Operation {
 	
 	/* association */
 	@ManyToOne
+	@JoinColumn(name="IdCompte")
 	private Compte compte;
 	@ManyToOne
-	private Employer employer;
+	@JoinColumn(name="IdEmployer")
+	private Employer employe;
 	
 	/* getEtSet */
 	public Long getIdOperation() {
@@ -65,11 +68,11 @@ public class Operation {
 	public void setCompte(Compte compte) {
 		this.compte = compte;
 	}
-	public Employer getEmployer() {
-		return employer;
+	public Employer getEmploye() {
+		return employe;
 	}
 	public void setEmploye(Employer employe) {
-		this.employer = employe;
+		this.employe = employe;
 	}
 		
 	/* constructors */
