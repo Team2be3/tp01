@@ -6,13 +6,13 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
-<!-- 	<bean id="daoClient" class="com.gestionVoiture.ClientDao.ClientDaoImpl"></bean>
-	<bean id="metierClient" class="com.gestionVoiture.ClientMetier.ClientMetierImpl">
-		<property name="dao" ref="daoClient"></property>
-	</bean> -->
+	<bean id="dao" class="com.gestionBanque.DAO.ImplemDao"></bean>
+	<bean id="metier" class="com.gestionBanque.Metier.ImplemMetier">
+		<property name="dao" ref="dao"></property>
+	</bean> 
     <bean id="datasource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
     <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
-    <property name="url" value="jdbc:mysql://localhost/gestionClientSpring"></property>
+    <property name="url" value="jdbc:mysql://localhost/gestionBanque"></property>
     <property name="username" value="root"></property>
     <property name="password" value=""></property>
     </bean>
