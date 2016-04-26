@@ -1,5 +1,13 @@
 package com.gestionBanque.Metier;
 
+/*Auteur:Dubuc Jérémy
+ *nom Projet:Team2be3-01
+ *date:26/04/2016
+ *Package:com.gestionBanque.Metier
+ *ImplemMetier
+ *version:1.
+ * */
+
 import java.util.Date;
 import java.util.List;
 
@@ -11,6 +19,8 @@ import com.gestionBanque.entities.Client;
 import com.gestionBanque.entities.Compte;
 import com.gestionBanque.entities.Employer;
 import com.gestionBanque.entities.Groupe;
+import com.gestionBanque.entities.Retrait;
+import com.gestionBanque.entities.Versement;
 
 @Transactional
 public class ImplemMetier implements InterMetier {
@@ -98,22 +108,31 @@ public class ImplemMetier implements InterMetier {
 	@Override
 	public void versement(double montant, Date dateOperation, Long idCompte,
 			Long idEmployer) {
-		// TODO Auto-generated method stub
+		Versement v= new Versement(dateOperation, montant);
+		Compte c=dao.getCompte(idCompte);
+		double s=c.getSolde()+montant;
+		c.setSolde(s);
+		dao.updateCompte(c);
+		dao.addOperation(v, idCompte, idEmployer);
 
 	}
 
 	@Override
 	public void retrait(double montant, Date dateOperation, Long idCompte,
 			Long idEmployer) {
-		// TODO Auto-generated method stub
-
+		Retrait r= new Retrait(dateOperation, montant);
+		Compte c=dao.getCompte(idCompte);
+		double s=c.getSolde()-montant;
+		c.setSolde(s);
+		dao.updateCompte(c);
+		dao.addOperation(r, idCompte, idEmployer);
 	}
 
 	@Override
 	public void virement(double montant, Date dateOperation, Long idCompteEm,
 			Long idCompteRe, Long idEmployer) {
-		// TODO Auto-generated method stub
-
+		retrait(montant,dateOperation,idCompteEm,idEmployer);
+		versement(montant,dateOperation,idCompteRe,idEmployer);
 	}
 
 }

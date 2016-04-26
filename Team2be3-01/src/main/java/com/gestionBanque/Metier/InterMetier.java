@@ -1,5 +1,13 @@
 package com.gestionBanque.Metier;
 
+/*Auteur:Dubuc Jérémy
+ *nom Projet:Team2be3-01
+ *date:26/04/2016
+ *Package:com.gestionBanque.Metier
+ *InterMetier
+ *version:1.
+ * */
+
 import java.util.Date;
 import java.util.List;
 

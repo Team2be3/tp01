@@ -76,34 +76,35 @@ public class ImplemDao implements InterDao {
 		return req.list();
 		
 	}
-
+	
 	@Override
 	public List<Compte> getListComParCli(Long idClient) {
-		
+		Client c=em.find(Client.class, idClient);
+		return c.getTabCompte();
 	}
 
 	@Override
 	public List<Compte> getListComCreEmp(Long idEmployer) {
-		// TODO Auto-generated method stub
-		return null;
+		Employer e=em.find(Employer.class, idEmployer);
+		return e.getTabCompte();
 	}
 
 	@Override
 	public List<Employer> getListEmployer() {
-		// TODO Auto-generated method stub
-		return null;
+		Query req=(Query) em.createQuery("from Employer");
+		return req.list();
 	}
 
 	@Override
 	public List<Employer> getListEmpParGro(Long idGroupe) {
-		// TODO Auto-generated method stub
-		return null;
+		Groupe g=em.find(Groupe.class, idGroupe);
+		return g.getTabEmployer();
 	}
 
 	@Override
 	public List<Groupe> getListGroupe() {
-		// TODO Auto-generated method stub
-		return null;
+		Query req=(Query) em.createQuery("from Groupe");
+		return req.list();
 	}
 
 	@Override
@@ -124,5 +125,9 @@ public class ImplemDao implements InterDao {
 		em.merge(c);
 		
 	}
+
+	
+
+	
 
 }
