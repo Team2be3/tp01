@@ -108,7 +108,7 @@ public class ImplemDao implements InterDao {
 
 	@Override
 	public List<Client> getListCliParMc(String mc) {
-		Query req=(Query) em.createQuery("from Compte c where c.idClient like:x");
+		Query req=(Query) em.createQuery("from Compte c where c.nomClient like:x");
 		req.setParameter("x", mc+"%");
 		return req.list();
 	}
