@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 /*Auteur:Loic Loichot
@@ -24,11 +25,12 @@ public class Employer {
 private Long idEmployer;
 private String nomEmployer;
 @OneToMany
-private ArrayList<Operation> tabo=new ArrayList<>();
+private ArrayList<Operation> tabOperation=new ArrayList<>();
 @OneToMany
-private ArrayList<Compte> tabc=new ArrayList<>();
+private ArrayList<Compte> tabCompte=new ArrayList<>();
 @ManyToMany
-private ArrayList<Groupe> tabg=new ArrayList<>();
+private ArrayList<Groupe> tabGroupe=new ArrayList<>();
+
 public Long getIdEmployer() {
 	return idEmployer;
 }
@@ -41,23 +43,24 @@ public String getNomEmployer() {
 public void setNomEmployer(String nomEmployer) {
 	this.nomEmployer = nomEmployer;
 }
-public ArrayList<Operation> getTabo() {
-	return tabo;
+
+public ArrayList<Operation> getTabOperation() {
+	return tabOperation;
 }
-public void setTabo(ArrayList<Operation> tabo) {
-	this.tabo = tabo;
+public void setTabOperation(ArrayList<Operation> tabOperation) {
+	this.tabOperation = tabOperation;
 }
-public ArrayList<Compte> getTabc() {
-	return tabc;
+public ArrayList<Compte> getTabCompte() {
+	return tabCompte;
 }
-public void setTabc(ArrayList<Compte> tabc) {
-	this.tabc = tabc;
+public void setTabCompte(ArrayList<Compte> tabCompte) {
+	this.tabCompte = tabCompte;
 }
-public ArrayList<Groupe> getTabg() {
-	return tabg;
+public ArrayList<Groupe> getTabGroupe() {
+	return tabGroupe;
 }
-public void setTabg(ArrayList<Groupe> tabg) {
-	this.tabg = tabg;
+public void setTabGroupe(ArrayList<Groupe> tabGroupe) {
+	this.tabGroupe = tabGroupe;
 }
 public Employer(String nomEmployer) {
 	super();

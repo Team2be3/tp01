@@ -31,7 +31,7 @@ private String prenomCLient;
 private Date dateNaissance;
 private String adresse;
 @OneToMany
-private ArrayList<Compte> tabc=new ArrayList<>();
+private ArrayList<Compte> tabCompte=new ArrayList<>();
 
 
 
@@ -66,11 +66,11 @@ public void setAdresse(String adresse) {
 	this.adresse = adresse;
 }
 
-public ArrayList<Compte> getTabc() {
-	return tabc;
+public ArrayList<Compte> getTabCompte() {
+	return tabCompte;
 }
-public void setTabc(ArrayList<Compte> tabc) {
-	this.tabc = tabc;
+public void setTabCompte(ArrayList<Compte> tabc) {
+	this.tabCompte = tabCompte;
 }
 public Client(String nomClient, String prenomCLient, Date dateNaissance,
 		String adresse) {
