@@ -69,7 +69,7 @@ public void setAdresse(String adresse) {
 public ArrayList<Compte> getTabCompte() {
 	return tabCompte;
 }
-public void setTabCompte(ArrayList<Compte> tabc) {
+public void setTabCompte(ArrayList<Compte> tabCompte) {
 	this.tabCompte = tabCompte;
 }
 public Client(String nomClient, String prenomCLient, Date dateNaissance,
