@@ -24,4 +24,7 @@ public interface InterDao {
 	public List<Groupe> getListGroupe();
 	public List<Client> getListCliParMc(String mc);
 	
+	public Compte getCompte(Long idCompte);
+	public void updateCompte(Compte c);
+	
 }
