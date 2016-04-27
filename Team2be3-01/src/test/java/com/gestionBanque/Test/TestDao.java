@@ -22,7 +22,6 @@ public class TestDao {
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		context=new ClassPathXmlApplicationContext("applicationContext.xml");
-		dao=(InterDao) context.getBean("dao");
 	}
 
 	@AfterClass

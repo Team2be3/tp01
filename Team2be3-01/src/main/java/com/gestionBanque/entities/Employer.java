@@ -1,6 +1,7 @@
 package com.gestionBanque.entities;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,12 +27,13 @@ public class Employer {
 private Long idEmployer;
 private String nomEmployer;
 @OneToMany(mappedBy="employe")
-private ArrayList<Operation> tabOperation=new ArrayList<Operation>();
+private List<Operation> tabOperation=new ArrayList<Operation>();
 @OneToMany(mappedBy="employer")
-private ArrayList<Compte> tabCompte=new ArrayList<Compte>();
+private List<Compte> tabCompte=new ArrayList<Compte>();
 @ManyToMany
 @JoinTable(name="Emp_Gro")
-private ArrayList<Groupe> tabGroupe=new ArrayList<Groupe>();
+private List<Groupe> tabGroupe=new ArrayList<Groupe>();
+
 
 public Long getIdEmployer() {
 	return idEmployer;
@@ -45,23 +47,22 @@ public String getNomEmployer() {
 public void setNomEmployer(String nomEmployer) {
 	this.nomEmployer = nomEmployer;
 }
-
-public ArrayList<Operation> getTabOperation() {
+public List<Operation> getTabOperation() {
 	return tabOperation;
 }
-public void setTabOperation(ArrayList<Operation> tabOperation) {
+public void setTabOperation(List<Operation> tabOperation) {
 	this.tabOperation = tabOperation;
 }
-public ArrayList<Compte> getTabCompte() {
+public List<Compte> getTabCompte() {
 	return tabCompte;
 }
-public void setTabCompte(ArrayList<Compte> tabCompte) {
+public void setTabCompte(List<Compte> tabCompte) {
 	this.tabCompte = tabCompte;
 }
-public ArrayList<Groupe> getTabGroupe() {
+public List<Groupe> getTabGroupe() {
 	return tabGroupe;
 }
-public void setTabGroupe(ArrayList<Groupe> tabGroupe) {
+public void setTabGroupe(List<Groupe> tabGroupe) {
 	this.tabGroupe = tabGroupe;
 }
 public Employer(String nomEmployer) {
@@ -71,5 +72,6 @@ public Employer(String nomEmployer) {
 public Employer() {
 	super();
 }
+
 
 }

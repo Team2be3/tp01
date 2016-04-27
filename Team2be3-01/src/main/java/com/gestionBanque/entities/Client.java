@@ -2,6 +2,7 @@ package com.gestionBanque.entities;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -31,7 +32,7 @@ private String prenomCLient;
 private Date dateNaissance;
 private String adresse;
 @OneToMany(mappedBy="client")
-private ArrayList<Compte> tabCompte=new ArrayList<Compte>();
+private List<Compte> tabCompte=new ArrayList<Compte>();
 
 
 
@@ -66,10 +67,10 @@ public void setAdresse(String adresse) {
 	this.adresse = adresse;
 }
 
-public ArrayList<Compte> getTabCompte() {
+public List<Compte> getTabCompte() {
 	return tabCompte;
 }
-public void setTabCompte(ArrayList<Compte> tabCompte) {
+public void setTabCompte(List<Compte> tabCompte) {
 	this.tabCompte = tabCompte;
 }
 public Client(String nomClient, String prenomCLient, Date dateNaissance,

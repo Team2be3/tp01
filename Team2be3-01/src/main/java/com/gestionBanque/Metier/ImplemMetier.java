@@ -113,24 +113,20 @@ public class ImplemMetier implements InterMetier {
 	@Override
 	public void versement(double montant, Date dateOperation, Long idCompte,
 			Long idEmployer) {
-		Versement v= new Versement(dateOperation, montant);
+		
+		dao.addOperation(new Versement(dateOperation, montant), idCompte, idEmployer);
 		Compte c=dao.getCompte(idCompte);
-		double s=c.getSolde()+montant;
-		c.setSolde(s);
+		c.setSolde(c.getSolde()+montant);
 		dao.updateCompte(c);
-		dao.addOperation(v, idCompte, idEmployer);
-
 	}
 
 	@Override
 	public void retrait(double montant, Date dateOperation, Long idCompte,
 			Long idEmployer) {
-		Retrait r= new Retrait(dateOperation, montant);
+		dao.addOperation(new Retrait(dateOperation, montant), idCompte, idEmployer);
 		Compte c=dao.getCompte(idCompte);
-		double s=c.getSolde()-montant;
-		c.setSolde(s);
+		c.setSolde(c.getSolde()-montant);
 		dao.updateCompte(c);
-		dao.addOperation(r, idCompte, idEmployer);
 	}
 
 	@Override

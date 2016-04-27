@@ -6,13 +6,13 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
-	<bean id="dao" class="com.gestionBanque.DAO.ImplemDao"></bean>
+	<bean id="daodao" class="com.gestionBanque.DAO.ImplemDao"></bean>
 	<bean id="metier" class="com.gestionBanque.Metier.ImplemMetier">
-		<property name="dao" ref="dao"></property>
+		<property name="dao" ref="daodao"></property>
 	</bean> 
     <bean id="datasource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
     <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
-    <property name="url" value="jdbc:mysql://localhost/gestionBanque"></property>
+    <property name="url" value="jdbc:mysql://localhost/gestionbanque"></property>
     <property name="username" value="root"></property>
     <property name="password" value=""></property>
     </bean>
@@ -26,7 +26,7 @@
     </bean>
     <bean id="EntityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
     <property name="persistenceUnitManager" ref="persistenceUnitManager"></property>
-    <property name="persistenceUnitName" value="UP_gestionVoiture"></property>
+    <property name="persistenceUnitName" value="UP_gestionBanque"></property>
     </bean>
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
     <property name="entityManagerFactory" ref="EntityManagerFactory"></property>
