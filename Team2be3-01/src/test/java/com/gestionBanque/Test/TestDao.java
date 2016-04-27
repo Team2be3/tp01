@@ -2,12 +2,17 @@ package com.gestionBanque.Test;
 
 import static org.junit.Assert.*;
 
+import java.util.Date;
+
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.gestionBanque.DAO.InterDao;
+import com.gestionBanque.entities.Client;
+import com.gestionBanque.entities.Employer;
+import com.gestionBanque.entities.Groupe;
 
 public class TestDao {
 	
@@ -27,17 +32,23 @@ public class TestDao {
 
 	@Test
 	public void testAddClient() {
-		fail("Not yet implemented");
+		Client c=new Client("Rengassamy","Alex",new Date(),"rue de figuig");
+		dao.addClient(c);
+		assertNotNull(c.getIdClient());
 	}
 
 	@Test
 	public void testAddEmployer() {
-		fail("Not yet implemented");
+		Employer e= new Employer("Dubuc");
+		dao.addEmployer(e);
+		assertNotNull(e.getIdEmployer());
 	}
 
 	@Test
 	public void testAddGroupe() {
-		fail("Not yet implemented");
+		Groupe g= new Groupe("Les boss");
+		dao.addGroupe(g);
+		assertNotNull(g.getIdGroupe());
 	}
 
 	@Test
