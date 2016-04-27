@@ -3,11 +3,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+ 
+	
 <title>Employer</title>
 </head>
 <body>
-	<div class="panel-heading">
+	<div class="panel panel-default">
+		<div class="panel-heading"></div>
 		<table class="table">
 			<tr>
 				<td>
@@ -51,6 +56,7 @@
 								<td>Client:</td>
 								<td><select class="selectpicker" name="idClient">
 										<option value="">test</option>
+										<option value="">test2</option>
 								</select></td>
 							</tr>
 							<tr>
@@ -95,5 +101,56 @@
 		</table>
 	</div>
 
+	<div class="panel panel-default">
+		<div class="panel-heading"><h3>Liste des comptes</h3></div>
+		<table class="table">
+			<th>Id Compte</th>
+			<th>Solde</th>
+			<th>Date de création</th>
+			<th>Client</th>
+			<th>Employer</th>
+			<th>Operations</th>
+			<tr>
+				<td>a</td>
+				<td>a</td>
+				<td>a</td>
+				<td>a</td>
+				<td>a</td>
+				<td>a</td>
+			</tr>
+		</table>
+	</div>
+
+	<div class="panel panel-default">
+		<div class="panel-heading"><h3>Liste des employers</h3></div>
+		<table class="table">
+			<th>Id Employer</th>
+			<th>Nom Employer</th>
+			<th>Operations effectuées</th>
+			<th>Comptes crées</th>
+			<th>Groupes rejoints</th>
+			<tr>
+				<td>a</td>
+				<td>a</td>
+				<td>a</td>
+				<td>a</td>
+				<td>a</td>
+			</tr>
+		</table>
+	</div>
+	
+	<div class="panel panel-default">
+		<div class="panel-heading"><h3>Liste des groupes</h3></div>
+		<table class="table">
+			<th>Id Groupe</th>
+			<th>Nom du groupe</th>
+			<th>Employers</th>
+			<tr>
+				<td>a</td>
+				<td>a</td>
+				<td>a</td>
+			</tr>
+		</table>
+	</div>
 </body>
 </html>
