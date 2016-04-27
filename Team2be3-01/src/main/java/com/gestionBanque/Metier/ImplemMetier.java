@@ -5,7 +5,7 @@ package com.gestionBanque.Metier;
  *date:26/04/2016
  *Package:com.gestionBanque.Metier
  *ImplemMetier
- *version:1.
+ *version:1. 
  * */
 
 import java.util.Date;
@@ -35,74 +35,79 @@ public class ImplemMetier implements InterMetier {
 
 	@Override
 	public void addClient(Client c) {
-		// TODO Auto-generated method stub
+		
+		dao.addClient(c);
 
 	}
 
 	@Override
 	public void addEmployer(Employer e) {
-		// TODO Auto-generated method stub
+
+		dao.addEmployer(e);
 
 	}
 
 	@Override
 	public void addGroupe(Groupe g) {
-		// TODO Auto-generated method stub
-
+		
+		dao.addGroupe(g);
+		
 	}
 
 	@Override
 	public void addEmpToGro(Long idEmployer, Long idGroupe) {
-		// TODO Auto-generated method stub
+
+		dao.addEmpToGro(idEmployer, idGroupe);
 
 	}
 
 	@Override
 	public void addCompte(Compte c, Long idClient, Long idEmployer) {
-		// TODO Auto-generated method stub
+
+		dao.addCompte(c, idClient, idEmployer);
 
 	}
 
 	@Override
 	public List<Compte> getListCompte() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return dao.getListCompte();
 	}
 
 	@Override
 	public List<Compte> getListComParCli(Long idClient) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return dao.getListComParCli(idClient);
 	}
 
 	@Override
 	public List<Compte> getListComCreEmp(Long idEmployer) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return dao.getListComCreEmp(idEmployer);
 	}
 
 	@Override
 	public List<Employer> getListEmployer() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return dao.getListEmployer();
 	}
 
 	@Override
 	public List<Employer> getListEmpParGro(Long idGroupe) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return dao.getListEmpParGro(idGroupe);
 	}
 
 	@Override
 	public List<Groupe> getListGroupe() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return dao.getListGroupe();
 	}
 
 	@Override
 	public List<Client> getListCliParMc(String mc) {
 		// TODO Auto-generated method stub
-		return null;
+		return dao.getListCliParMc(mc);
 	}
 
 	@Override
