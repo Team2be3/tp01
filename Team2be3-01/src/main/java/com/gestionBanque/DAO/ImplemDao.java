@@ -1,11 +1,19 @@
 package com.gestionBanque.DAO;
-
+/*Auteur:Loic Loichot
+ * nom Projet:Team2be3
+ *date:26/04/2016
+ *Package:com.gestionVoiture.DAO
+ *Class:ImplemDAO.
+ *version:1.
+ * 
+ * */
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.hibernate.Query;
+
+import javax.persistence.Query;
 
 import com.gestionBanque.entities.Client;
 import com.gestionBanque.entities.Compte;
@@ -73,7 +81,7 @@ public class ImplemDao implements InterDao {
 	@Override
 	public List<Compte> getListCompte() {
 		Query req=(Query) em.createQuery("from Compte");
-		return req.list();
+		return req.getResultList();
 		
 	}
 	
@@ -92,7 +100,7 @@ public class ImplemDao implements InterDao {
 	@Override
 	public List<Employer> getListEmployer() {
 		Query req=(Query) em.createQuery("from Employer");
-		return req.list();
+		return req.getResultList();
 	}
 
 	@Override
@@ -104,14 +112,14 @@ public class ImplemDao implements InterDao {
 	@Override
 	public List<Groupe> getListGroupe() {
 		Query req=(Query) em.createQuery("from Groupe");
-		return req.list();
+		return req.getResultList();
 	}
 
 	@Override
 	public List<Client> getListCliParMc(String mc) {
 		Query req=(Query) em.createQuery("from Compte c where c.nomClient like:x");
 		req.setParameter("x", mc+"%");
-		return req.list();
+		return req.getResultList();
 	}
 
 	@Override
