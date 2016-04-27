@@ -17,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.gestionBanque.DAO.InterDao;
 import com.gestionBanque.entities.Client;
 import com.gestionBanque.entities.Compte;
+import com.gestionBanque.entities.CompteCourant;
 import com.gestionBanque.entities.Employer;
 import com.gestionBanque.entities.Groupe;
 import com.gestionBanque.entities.Retrait;
@@ -109,6 +110,12 @@ public class ImplemMetier implements InterMetier {
 		// TODO Auto-generated method stub
 		return dao.getListCliParMc(mc);
 	}
+	
+	@Override
+	public Compte getCompte(Long idCompte) {
+		
+		return dao.getCompte(idCompte);
+	}
 
 	@Override
 	public void versement(double montant, Date dateOperation, Long idCompte,
@@ -117,23 +124,27 @@ public class ImplemMetier implements InterMetier {
 		dao.addOperation(new Versement(dateOperation, montant), idCompte, idEmployer);
 		Compte c=dao.getCompte(idCompte);
 		c.setSolde(c.getSolde()+montant);
-		dao.updateCompte(c);
 	}
 
 	@Override
 	public void retrait(double montant, Date dateOperation, Long idCompte,
-			Long idEmployer) {
+			Long idEmployer) throws Exception {
 		dao.addOperation(new Retrait(dateOperation, montant), idCompte, idEmployer);
 		Compte c=dao.getCompte(idCompte);
-		c.setSolde(c.getSolde()-montant);
-		dao.updateCompte(c);
+		double solde=c.getSolde()-montant;
+		//String s=c.getClass().toString();
+		//if (s.equals("class com.gestionBanque.entities.CompteCourant"))
+		if (solde<0) throw new Exception("Solde insuffisant");
+		else c.setSolde(solde);
 	}
 
 	@Override
 	public void virement(double montant, Date dateOperation, Long idCompteEm,
-			Long idCompteRe, Long idEmployer) {
+			Long idCompteRe, Long idEmployer) throws Exception {
 		retrait(montant,dateOperation,idCompteEm,idEmployer);
 		versement(montant,dateOperation,idCompteRe,idEmployer);
 	}
+
+	
 
 }

@@ -5,7 +5,7 @@ import java.util.Date;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
-/*Auteur:Boumaza Alex
+/*Auteur:Rengassamy Alex
  * nom Projet :2be3
  *date:26/04/2016
  *Package:com.gestionBanque.entities

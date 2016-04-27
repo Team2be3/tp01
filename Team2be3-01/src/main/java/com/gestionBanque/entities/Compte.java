@@ -19,7 +19,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-/*Auteur:Boumaza Alex
+/*Auteur:Rengassamy Alex
  * nom Projet :2be3
  *date:26/04/2016
  *Package:com.gestionBanque.entities

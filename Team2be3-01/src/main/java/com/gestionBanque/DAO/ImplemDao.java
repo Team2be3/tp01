@@ -50,8 +50,8 @@ public class ImplemDao implements InterDao {
 		Groupe g=em.find(Groupe.class, idGroupe);
 		e.getTabGroupe().add(g);
 		g.getTabEmployer().add(e);
-		em.persist(g);
-		em.persist(e);
+		em.merge(g);
+		em.merge(e);
 		
 		
 	}
@@ -87,14 +87,16 @@ public class ImplemDao implements InterDao {
 	
 	@Override
 	public List<Compte> getListComParCli(Long idClient) {
-		Client c=em.find(Client.class, idClient);
-		return c.getTabCompte();
+		Query req=(Query) em.createQuery("from Compte cp where cp.client.idClient = :x");
+		req.setParameter("x", idClient);
+		return req.getResultList();
 	}
 
 	@Override
 	public List<Compte> getListComCreEmp(Long idEmployer) {
-		Employer e=em.find(Employer.class, idEmployer);
-		return e.getTabCompte();
+		Query req=(Query) em.createQuery("from Compte cp where cp.employer.idEmployer = :x");
+		req.setParameter("x", idEmployer);
+		return req.getResultList();
 	}
 
 	@Override
@@ -105,8 +107,9 @@ public class ImplemDao implements InterDao {
 
 	@Override
 	public List<Employer> getListEmpParGro(Long idGroupe) {
-		Groupe g=em.find(Groupe.class, idGroupe);
-		return g.getTabEmployer();
+		Query req=(Query) em.createQuery("select g.tabEmployer from Groupe g where g.idGroupe= :x");
+		req.setParameter("x", idGroupe);
+		return req.getResultList();
 	}
 
 	@Override
@@ -117,7 +120,7 @@ public class ImplemDao implements InterDao {
 
 	@Override
 	public List<Client> getListCliParMc(String mc) {
-		Query req=(Query) em.createQuery("from Compte c where c.nomClient like:x");
+		Query req=(Query) em.createQuery("from Client c where c.nomClient like :x");
 		req.setParameter("x", mc+"%");
 		return req.getResultList();
 	}
@@ -126,16 +129,6 @@ public class ImplemDao implements InterDao {
 	public Compte getCompte(Long idCompte) {
 		Compte c=em.find(Compte.class,idCompte);
 		return c;
-	}
-
-	@Override
-	public void updateCompte(Compte c) {
-		em.merge(c);
-		
-	}
-
-	
-
-	
+	}	
 
 }

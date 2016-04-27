@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
@@ -31,7 +32,7 @@ private List<Operation> tabOperation=new ArrayList<Operation>();
 @OneToMany(mappedBy="employer")
 private List<Compte> tabCompte=new ArrayList<Compte>();
 @ManyToMany
-@JoinTable(name="Emp_Gro")
+@JoinTable(name="Emp_Gro",joinColumns=@JoinColumn(name="idEmployer"),inverseJoinColumns=@JoinColumn(name="idGroupe"))
 private List<Groupe> tabGroupe=new ArrayList<Groupe>();
 
 

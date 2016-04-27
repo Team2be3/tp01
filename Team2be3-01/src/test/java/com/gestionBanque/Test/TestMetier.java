@@ -2,12 +2,19 @@ package com.gestionBanque.Test;
 
 import static org.junit.Assert.*;
 
+import java.util.Date;
+import java.util.List;
+
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.gestionBanque.Metier.InterMetier;
+import com.gestionBanque.entities.Client;
+import com.gestionBanque.entities.Compte;
+import com.gestionBanque.entities.Employer;
+import com.gestionBanque.entities.Groupe;
 
 public class TestMetier {
 	
@@ -23,81 +30,111 @@ public class TestMetier {
 
 	@AfterClass
 	public static void tearDownAfterClass() throws Exception {
+		context.close();
 	}
 
 	@Test
 	public void testAddClient() {
-		fail("Not yet implemented");
+		Client c=new Client("dubuc", "jeremy", new Date(), "ici");
+		metier.addClient(c);
+		assertNotNull(c.getIdClient());
 	}
 
 	@Test
 	public void testAddEmployer() {
-		fail("Not yet implemented");
+		Employer e=new Employer("MisterA");
+		metier.addEmployer(e);
+		assertNotNull(e.getIdEmployer());
 	}
 
 	@Test
 	public void testAddGroupe() {
-		fail("Not yet implemented");
+		Groupe g=new Groupe("test");
+		metier.addGroupe(g);
+		assertNotNull(g.getIdGroupe());
 	}
 
 	@Test
 	public void testAddEmpToGro() {
-		fail("Not yet implemented");
+		List<Employer> tab1=metier.getListEmpParGro(1L);
+		metier.addEmpToGro(1L, 1L);
+		List<Employer> tab2=metier.getListEmpParGro(1L);
+		assertTrue(tab2.size()>tab1.size());
 	}
 
 	@Test
 	public void testAddCompte() {
-		fail("Not yet implemented");
+		Compte c=new Compte(10, new Date());
+		metier.addCompte(c, 1L, 1L);
+		assertNotNull(c.getIdCompte());
 	}
 
 	@Test
 	public void testGetListCompte() {
-		fail("Not yet implemented");
+		List<Compte> tab=metier.getListCompte();
+		assertTrue(tab.size()>0);
 	}
 
 	@Test
 	public void testGetListComParCli() {
-		fail("Not yet implemented");
+		List<Compte> tab=metier.getListComParCli(1L);
+		assertTrue(tab.size()>0);
 	}
 
 	@Test
 	public void testGetListComCreEmp() {
-		fail("Not yet implemented");
+		List<Compte> tab=metier.getListComCreEmp(1L);
+		assertTrue(tab.size()>0);
 	}
 
 	@Test
 	public void testGetListEmployer() {
-		fail("Not yet implemented");
+		List<Employer> tab=metier.getListEmployer();
+		assertTrue(tab.size()>0);
 	}
 
 	@Test
 	public void testGetListEmpParGro() {
-		fail("Not yet implemented");
+		List<Employer> tab=metier.getListEmpParGro(1L);
+		assertTrue(tab.size()>0);
 	}
 
 	@Test
 	public void testGetListGroupe() {
-		fail("Not yet implemented");
+		List<Groupe> tab=metier.getListGroupe();
+		assertTrue(tab.size()>0);
 	}
 
 	@Test
 	public void testGetListCliParMc() {
-		fail("Not yet implemented");
+		List<Client> tab=metier.getListCliParMc("d");
+		assertTrue(tab.size()>0);
 	}
 
 	@Test
 	public void testVersement() {
-		fail("Not yet implemented");
+		double solde1=metier.getCompte(1L).getSolde();
+		metier.versement(20, new Date(), 1L, 1L);
+		double solde2=metier.getCompte(1L).getSolde();
+		assertTrue(solde2-solde1==20);
 	}
 
 	@Test
-	public void testRetrait() {
-		fail("Not yet implemented");
+	public void testRetrait() throws Exception {
+		double solde1=metier.getCompte(1L).getSolde();
+		metier.retrait(20, new Date(), 1L, 1L);
+		double solde2=metier.getCompte(1L).getSolde();
+		assertTrue(solde1-solde2==20);
 	}
 
 	@Test
-	public void testVirement() {
-		fail("Not yet implemented");
+	public void testVirement() throws Exception {
+		double solde1a=metier.getCompte(1L).getSolde();
+		double solde1b=metier.getCompte(2L).getSolde();
+		metier.virement(5, new Date(), 1L, 2L, 1L);
+		double solde2a=metier.getCompte(1L).getSolde();
+		double solde2b=metier.getCompte(2L).getSolde();
+		assertTrue((solde2b-solde1b==5)&&(solde1a-solde2a==5));
 	}
 
 }

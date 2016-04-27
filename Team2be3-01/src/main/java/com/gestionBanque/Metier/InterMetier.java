@@ -31,8 +31,10 @@ public interface InterMetier {
 	public List<Groupe> getListGroupe();
 	public List<Client> getListCliParMc(String mc);
 	
+	public Compte getCompte(Long idCompte);
+	
 	public void versement(double montant,Date dateOperation,Long idCompte,Long idEmployer);
-	public void retrait(double montant,Date dateOperation,Long idCompte,Long idEmployer);
-	public void virement(double montant,Date dateOperation,Long idCompteEm,Long idCompteRe,Long idEmployer);
+	public void retrait(double montant,Date dateOperation,Long idCompte,Long idEmployer) throws Exception;
+	public void virement(double montant,Date dateOperation,Long idCompteEm,Long idCompteRe,Long idEmployer) throws Exception;
 
 }

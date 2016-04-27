@@ -32,6 +32,5 @@ public interface InterDao {
 	public List<Client> getListCliParMc(String mc);//obtient la liste des client dont le nom commence par mc
 	
 	public Compte getCompte(Long idCompte);// obtient un compte c
-	public void updateCompte(Compte c);// met a jour le compte c
 	
 }
