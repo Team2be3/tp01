@@ -129,7 +129,7 @@
 		<div class="panel-heading">
 			<h3>Liste des comptes</h3>
 		</div>
-
+<!-- Liste des comptes -->
 		<table class="table table-striped">
 			<tr class="info">
 				<td><b>Id Compte</b></td>
@@ -149,7 +149,7 @@
 			</c:forEach>
 		</table>
 	</div>
-
+<!-- Liste des employés -->
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			<h3>Liste des employes</h3>
@@ -186,7 +186,7 @@
 			</c:forEach>
 		</table>
 	</div>
-
+<!-- Liste des groupes -->
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			<h3>Liste des groupes</h3>
@@ -218,6 +218,7 @@
 		<br />
 		<table class="table">
 			<tr>
+<!-- Ajouter employer -->
 				<td><form action="ajouterEmployer" method="post">
 						<table class="table">
 							<th>Ajouter un employe :</th>
@@ -230,6 +231,7 @@
 							</tr>
 						</table>
 					</form></td>
+<!-- Ajouter groupe -->
 				<td><form action="ajouterGroupe" method="post">
 						<table class="table">
 							<th>Ajouter un groupe :</th>
@@ -242,6 +244,7 @@
 							</tr>
 						</table>
 					</form></td>
+<!-- Ajouter employer à un groupe-->
 				<td><form action="ajouterEmplGro" method="post">
 						<table class="table">
 							<th>Ajouter un employe à un groupe :</th>
