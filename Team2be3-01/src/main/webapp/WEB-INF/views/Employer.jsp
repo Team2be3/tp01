@@ -212,7 +212,7 @@
 							<th>Ajouter un employe :</th>
 							<tr>
 								<td>Nom de l'employe</td>
-								<td><input type="text" name="nomGroupe"></td>
+								<td><input type="text" name="nomEmployer"></td>
 							</tr>
 							<tr>
 								<td><button type="submit" class="btn btn-primary">Ajouter</button></td>
@@ -231,7 +231,7 @@
 							</tr>
 						</table>
 					</form></td>
-				<td><form action="ajouterEmployerGroupe" method="post">
+				<td><form action="ajouterEmplGro" method="post">
 						<table class="table">
 							<th>Ajouter un employe à un groupe :</th>
 							<tr>
