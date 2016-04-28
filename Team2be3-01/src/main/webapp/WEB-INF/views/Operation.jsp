@@ -26,7 +26,7 @@
 	<table class="table">
 		<tr>
 			<td>
-				<form action="Operation/Virement" method="post">
+				<form action="operationVirement" method="post">
 					<table class="table">
 						<th>Virement</th>
 						<tr>
@@ -45,6 +45,10 @@
 							<td><input type="text" name="idCompte2"></td>
 						</tr>
 						<tr>
+							<td>Identifiant de l'employés</td>
+							<td><input type="text" name="idEmployer"></td>
+						</tr>
+						<tr>
 							<td><input type="submit" value="valider"></td>
 						</tr>
 					</table>
@@ -52,7 +56,7 @@
 			</td>
 			
 			<td>
-				<form action="Operation/Versement" method="post">
+				<form action="operationVersement" method="post">
 					<table class="table">
 						<th>Versement</th>
 						<tr>
@@ -68,6 +72,10 @@
 							<td><input type="text" name="idCompte"></td>
 						</tr>
 						<tr>
+							<td>Identifiant de l'employés</td>
+							<td><input type="text" name="idEmployer"></td>
+						</tr>
+						<tr>
 							<td><input type="submit" value="valider"></td>
 						</tr>
 					</table>
@@ -75,7 +83,7 @@
 			</td>
 			
 			<td>
-				<form action="Operation/Retrait" method="post">
+				<form action="operationRetrait" method="post">
 					<table class="table">
 						<th>Retrait</th>
 						<tr>
@@ -91,6 +99,10 @@
 							<td><input type="text" name="idCompte"></td>
 						</tr>
 						<tr>
+							<td>Identifiant de l'employés</td>
+							<td><input type="text" name="idEmployer"></td>
+						</tr>
+						<tr>
 							<td><input type="submit" value="valider"></td>
 						</tr>
 					</table>
@@ -100,62 +112,6 @@
 	</table>
 
 
-
-	<!--  <table class=tab>
-		 <th>   IdClient</th>
-		<th>    Nom</th>
-		<th>    Prenom</th>
-		<th>    Date de naissance</th>
-		<th>    Adresse</th>
-		<c:forEach items="${model}" var="e">
-			<tr>
-			
-				<td>${e.idClient}</td>
-				<td>${e.nomClient}</td>
-				<td>${e.prenomCLient}</td>
-				<td>${e.dateNaissance}</td>
-				<td>${e.adresse}</td>
-				
-			</tr>
-		</c:forEach>
-	</table>
-	
-<table class="table">
-    <thead>
-        <tr>
-             <th>   IdClient</th>
-		<th>    Nom</th>
-		<th>    Prenom</th>
-		<th>    Date de naissance</th>
-		<th>    Adresse</th>
-        </tr>
-    </thead>
-    <tbody>
-        <c:forEach items="${model}" var="e">
-			<tr>
-			
-				<td>${e.idClient}</td>
-				<td>${e.nomClient}</td>
-				<td>${e.prenomCLient}</td>
-				<td>${e.dateNaissance}</td>
-				<td>${e.adresse}</td>
-				
-			</tr>
-		</c:forEach>
-        
-    </tbody>
-</table>-->
-	<%-- <form action="Operation" method="post">
-<label for="idOperation">Selectionner l'operation à effectuer</label>
-		<select name="sopt">
-		
-		<option value="${Virement}"> Virement</option>
-		<option value="${Versement}"> Versement</option>
-		<option value="${Retrait}"> Retrait</option>
-		</select>
-		<input type="submit" value="selectionner">
-	</form>
-	<p>Remplir uniquement les cases correspondantes au ${tabse} </p> --%>
 
 </body>
 </html>
