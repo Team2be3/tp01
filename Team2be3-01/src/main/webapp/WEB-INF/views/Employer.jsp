@@ -68,17 +68,17 @@
 							</tr>
 							<tr>
 								<td>Client:</td>
-								<td><select class="selectpicker">
+								<td><select class="selectpicker" name="idClient">
 										<c:forEach items="${client}" var="cl">
-											<option>${cl.nomClient}</option>
+											<option value="${cl.idClient}">${cl.nomClient}</option>
 										</c:forEach>
 								</select></td>
 							</tr>
 							<tr>
 								<td>Employe:</td>
-								<td><select class="selectpicker">
+								<td><select class="selectpicker" name="idEmployer">
 										<c:forEach items="${employer}" var="em">
-											<option>${em.nomEmployer}</option>
+											<option value="${em.idEmployer}">${em.nomEmployer}</option>
 										</c:forEach>
 								</select></td>
 							</tr>
@@ -102,17 +102,17 @@
 							</tr>
 							<tr>
 								<td>Client:</td>
-								<td><select class="selectpicker">
+								<td><select class="selectpicker" name="idClient">
 										<c:forEach items="${client}" var="cl">
-											<option>${cl.nomClient}</option>
+											<option value="${cl.idClient}">${cl.nomClient}</option>
 										</c:forEach>
 								</select></td>
 							</tr>
 							<tr>
 								<td>Employe:</td>
-								<td><select class="selectpicker">
+								<td><select class="selectpicker" name="idEmployer">
 										<c:forEach items="${employer}" var="em">
-											<option>${em.nomEmployer}</option>
+											<option value="${em.idEmployer}">${em.nomEmployer}</option>
 										</c:forEach>
 								</select></td>
 							</tr>
