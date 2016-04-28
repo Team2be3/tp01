@@ -33,7 +33,12 @@ public class Controller3 {
     Long id2=Long.parseLong(idCompte2);
     Long idEm=Long.parseLong(idEmployer);
     metier.virement(mt, d1, id1, id2, idEm);
-    	return "Operation";
+    
+	model.addAttribute("client", metier.getListCliParMc(""));
+	model.addAttribute("employer", metier.getListEmployer());
+	model.addAttribute("compte", metier.getListCompte());
+	model.addAttribute("groupe", metier.getListGroupe());
+    	return "Employer";
 	}
 	
 	@RequestMapping(value="/operationRetrait")
@@ -44,7 +49,12 @@ public class Controller3 {
 	    Long idC=Long.parseLong(idCompte);
 	    Long idEm=Long.parseLong(idEmployer);
 	    metier.retrait(mt, d1, idC, idEm);
-    	return "Operation";
+	    
+		model.addAttribute("client", metier.getListCliParMc(""));
+		model.addAttribute("employer", metier.getListEmployer());
+		model.addAttribute("compte", metier.getListCompte());
+		model.addAttribute("groupe", metier.getListGroupe());
+    	return "Employer";
     }
 	@RequestMapping(value="/operationVersement")
 	public String indexOperationVersement(Model model,String montant, String dateOperation,String idCompte, String idEmployer) throws Exception{
@@ -54,6 +64,11 @@ public class Controller3 {
 	    Long idC=Long.parseLong(idCompte);
 	    Long idEm=Long.parseLong(idEmployer);
 	    metier.versement(mt, d1, idC, idEm);
-    	return "Operation";
+	    
+		model.addAttribute("client", metier.getListCliParMc(""));
+		model.addAttribute("employer", metier.getListEmployer());
+		model.addAttribute("compte", metier.getListCompte());
+		model.addAttribute("groupe", metier.getListGroupe());
+    	return "Employer";
     }
 }
