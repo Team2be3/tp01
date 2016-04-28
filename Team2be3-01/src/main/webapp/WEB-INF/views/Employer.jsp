@@ -158,35 +158,34 @@
 			<tr class="danger">
 				<td><b>Id Employe</b></td>
 				<td><b>Nom Employe</b></td>
-				<td><b>Comptes crées</b></td>
 			</tr>
 			<c:forEach items="${employer}" var="em">
 				<tr>
 					<td>${em.idEmployer}</td>
 					<td>${em.nomEmployer}</td>
-					<td>
-				  <%-- <form action="afficherCompteCreEmp" method="post">
-					<select class="selectpicker">
-						<option>Compte</option>
-						<c:forEach items="${comcre}" var="cc">
-							<option>${cc.idCompte}</option>
-						</c:forEach>
-					</select>
-					<button type="submit" class="btn btn-success">Charger</button>
-					</form> --%>
-					
-					<select class="selectpicker">
-						<option>Compte</option>
-						<c:forEach items="${comcre}" var="cc">
-							<option>${cc.idEmployer}</option>
-						</c:forEach>
-					</select>
-					</td>
 				</tr>
 			</c:forEach>
 		</table>
 	</div>
-<!-- Liste des groupes -->
+	<!-- Liste des comptes pour un employe -->
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3>Liste des id des comptes crées par  un employé</h3>
+		</div>
+		<form action="afficherCompteCreEmp" method="post">
+			<select class="selectpicker" name="idEmployer">
+				<option>Nom de l'employé</option>
+				<c:forEach items="${employer}" var="em">
+					<option value="${em.idEmployer}">${em.nomEmployer}</option>
+				</c:forEach>
+			</select>
+			<button type="submit" class="btn btn-success">Charger</button>
+		</form>
+		<c:forEach items="${comcre}" var="cc">
+			<option>${cc.idCompte}</option>
+		</c:forEach>
+	</div>
+	<!-- Liste des groupes -->
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			<h3>Liste des groupes</h3>
@@ -195,23 +194,11 @@
 			<tr class="info">
 				<td><b>Id Groupe</b></td>
 				<td><b>Nom du groupe</b></td>
-				<td><b>Employes</b></td>
 			</tr>
 			<c:forEach items="${groupe}" var="gr">
 				<tr>
 					<td>${gr.idGroupe}</td>
 					<td>${gr.nomGroupe}</td>
-					<td>
-					<form action="afficherEmpParGro" method="post">
-					<select class="selectpicker">
-						<option>Employe</option>
-						<c:forEach items="${empgro}" var="eg">
-							<option>${eg.idEmploye}</option>
-						</c:forEach>
-					</select>
-					<button type="submit" class="btn btn-success">Charger</button>
-					</form>
-					</td>
 				</tr>
 			</c:forEach>
 		</table>
@@ -272,6 +259,25 @@
 					</form></td>
 			</tr>
 		</table>
+	</div>
+	
+<!-- Liste des comptes pour un employe -->
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3>Liste des employés appartenant à un groupe</h3>
+		</div>
+		<form action="afficherEmpParGro" method="post">
+			<select class="selectpicker" name="idGroupe">
+				<option>Nom du groupe</option>
+				<c:forEach items="${groupe}" var="gr">
+					<option value="${gr.idGroupe}">${gr.nomGroupe}</option>
+				</c:forEach>
+			</select>
+			<button type="submit" class="btn btn-success">Charger</button>
+		</form>
+		<c:forEach items="${empgro}" var="eg">
+			<option>${eg.nomEmployer}</option>
+		</c:forEach>
 	</div>
 </body>
 </html>
