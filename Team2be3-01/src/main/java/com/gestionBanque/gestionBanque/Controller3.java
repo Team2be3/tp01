@@ -1,5 +1,7 @@
 package com.gestionBanque.gestionBanque;
 
+import java.text.SimpleDateFormat;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,8 +23,8 @@ public class Controller3 {
     	return "client";
     }
 	@RequestMapping(value="/operation")
-	public String indexOperation(Model model){
-    
+	public String indexOperation(Model model,String montant, String dateOperation,String idCompte1,String idCompte2){
+    SimpleDateFormat sd=
     	return "Operation";
 	}
 	
