@@ -1,6 +1,8 @@
 package com.gestionBanque.gestionBanque;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,21 +18,42 @@ public class Controller3 {
 	
 	@Autowired
 	private InterMetier metier;
-	
-	@RequestMapping(value="/")
-	public String index(Model model){
-    	
-    	return "client";
-    }
 	@RequestMapping(value="/operation")
-	public String indexOperation(Model model,String montant, String dateOperation,String idCompte1,String idCompte2){
-    SimpleDateFormat sd=
+	public String indexOperation(Model model){
+    
     	return "Operation";
 	}
 	
 	@RequestMapping(value="/operationVirement")
-	public String indexOperationVirement(Model model){
-  
+	public String indexOperationVirement(Model model,String montant, String dateOperation,String idCompte1,String idCompte2, String idEmployer) throws Exception{
+    SimpleDateFormat sd=new SimpleDateFormat("yyyy-MM-dd");
+    Date d1=sd.parse(dateOperation);
+    double mt=Double.parseDouble(montant);
+    Long id1=Long.parseLong(idCompte1);
+    Long id2=Long.parseLong(idCompte2);
+    Long idEm=Long.parseLong(idEmployer);
+    metier.virement(mt, d1, id1, id2, idEm);
+    	return "Operation";
+	}
+	
+	@RequestMapping(value="/operationRetrait")
+	public String indexOperationRetrait(Model model,String montant, String dateOperation,String idCompte, String idEmployer) throws Exception{
+		SimpleDateFormat sd=new SimpleDateFormat("yyyy-MM-dd");
+	    Date d1=sd.parse(dateOperation);
+	    double mt=Double.parseDouble(montant);
+	    Long idC=Long.parseLong(idCompte);
+	    Long idEm=Long.parseLong(idEmployer);
+	    metier.retrait(mt, d1, idC, idEm);
+    	return "Operation";
+    }
+	@RequestMapping(value="/operationVersement")
+	public String indexOperationVersement(Model model,String montant, String dateOperation,String idCompte, String idEmployer) throws Exception{
+		SimpleDateFormat sd=new SimpleDateFormat("yyyy-MM-dd");
+	    Date d1=sd.parse(dateOperation);
+	    double mt=Double.parseDouble(montant);
+	    Long idC=Long.parseLong(idCompte);
+	    Long idEm=Long.parseLong(idEmployer);
+	    metier.versement(mt, d1, idC, idEm);
     	return "Operation";
     }
 }
