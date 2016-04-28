@@ -28,6 +28,7 @@ public class Controller2 {
 		model.addAttribute("employer", metier.getListEmployer());
 		model.addAttribute("compte", metier.getListCompte());
 		model.addAttribute("groupe", metier.getListGroupe());
+		
     	return "Employer";
     }
 	
@@ -36,6 +37,7 @@ public class Controller2 {
 		SimpleDateFormat SDF=new SimpleDateFormat("yyyy-MM-dd");
 		Date dateNaisb=SDF.parse(dateNaissance);
 		metier.addClient(new Client(nomClient, prenomClient, dateNaisb, adresse));
+		
 		
 		model.addAttribute("client", metier.getListCliParMc(""));
 		model.addAttribute("employer", metier.getListEmployer());
@@ -77,7 +79,6 @@ public class Controller2 {
 	@RequestMapping(value="/afficherCompteCreEmp")
 	public String afficherCompteCreEmp(Model model, Long idEmployer){
 		model.addAttribute("comcre", metier.getListComCreEmp(idEmployer));
-		
 		model.addAttribute("client", metier.getListCliParMc(""));
 		model.addAttribute("employer", metier.getListEmployer());
 		model.addAttribute("compte", metier.getListCompte());

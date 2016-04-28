@@ -26,6 +26,7 @@
 	<div class="panel panel-default">
 		<table class="table">
 			<tr>
+<!-- Ajouter un client -->
 				<td>
 					<form action="insererClient" method="post">
 						<table class="table">
@@ -52,6 +53,7 @@
 					</form>
 
 				</td>
+<!-- Ajouter un compte courant -->
 				<td>
 					<form action="insererCompteCourant" method="post">
 						<table class="table">
@@ -85,6 +87,7 @@
 					</form>
 
 				</td>
+<!-- Ajouter un compte epargne -->
 				<td>
 					<form action="insererCompteEpargne" method="post">
 						<table class="table">
@@ -126,6 +129,7 @@
 		<div class="panel-heading">
 			<h3>Liste des comptes</h3>
 		</div>
+
 		<table class="table table-striped">
 			<tr class="info">
 				<td><b>Id Compte</b></td>
@@ -161,7 +165,7 @@
 					<td>${em.idEmployer}</td>
 					<td>${em.nomEmployer}</td>
 					<td>
-					<form action="afficherCompteCreEmp" method="post">
+				  <%-- <form action="afficherCompteCreEmp" method="post">
 					<select class="selectpicker">
 						<option>Compte</option>
 						<c:forEach items="${comcre}" var="cc">
@@ -169,7 +173,14 @@
 						</c:forEach>
 					</select>
 					<button type="submit" class="btn btn-success">Charger</button>
-					</form>
+					</form> --%>
+					
+					<select class="selectpicker">
+						<option>Compte</option>
+						<c:forEach items="${comcre}" var="cc">
+							<option>${cc.idEmployer}</option>
+						</c:forEach>
+					</select>
 					</td>
 				</tr>
 			</c:forEach>
