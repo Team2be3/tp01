@@ -22,6 +22,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 @Entity
 @Inheritance
@@ -34,7 +35,15 @@ public class Operation {
 	@Temporal(TemporalType.DATE)
 	private Date dateOperation;
 	private double montant;
+	@Transient
+	private String exception;
 	
+	public String getException() {
+		return exception;
+	}
+	public void setException(String exception) {
+		this.exception = exception;
+	}
 	/* association */
 	@ManyToOne
 	@JoinColumn(name="IdCompte")

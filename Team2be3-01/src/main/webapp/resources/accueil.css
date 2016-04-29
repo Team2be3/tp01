@@ -1,3 +1,8 @@
-body{
+.containeracceuil{
 	background: url("fond ecran banque 2.jpg") fixed; 
+}
+
+.erreur{
+	text-align: center;
+	color: red;
 }

@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.gestionBanque.Metier.InterMetier;
+import com.gestionBanque.entities.Operation;
+import com.gestionBanque.entities.Retrait;
 
 @Controller
 public class Controller3 {
@@ -44,18 +46,27 @@ public class Controller3 {
 	
 	@RequestMapping(value="/operationRetrait")
 	public String indexOperationRetrait(Model model,String montant, String dateOperation,String idCompte, String idEmployer) throws Exception{
-		SimpleDateFormat sd=new SimpleDateFormat("yyyy-MM-dd");
-	    Date d1=sd.parse(dateOperation);
-	    double mt=Double.parseDouble(montant);
-	    Long idC=Long.parseLong(idCompte);
-	    Long idEm=Long.parseLong(idEmployer);
-	    metier.retrait(mt, d1, idC, idEm);
+		try {
+			SimpleDateFormat sd=new SimpleDateFormat("yyyy-MM-dd");
+		    Date d1=sd.parse(dateOperation);
+		    double mt=Double.parseDouble(montant);
+		    Long idC=Long.parseLong(idCompte);
+		    Long idEm=Long.parseLong(idEmployer);
+		   
+
+		    metier.retrait(mt, d1, idC, idEm);
+		} catch (Exception e) {
+			
+			Operation o=new Retrait();
+			o.setException(e.getMessage());
+			model.addAttribute("op", o);
+		}
 	    
 		model.addAttribute("client", metier.getListCliParMc(""));
 		model.addAttribute("employer", metier.getListEmployer());
 		model.addAttribute("compte", metier.getListCompte());
 		model.addAttribute("groupe", metier.getListGroupe());
-    	return "Employer";
+    	return "Operation";
     }
 	@RequestMapping(value="/operationVersement")
 	public String indexOperationVersement(Model model,String montant, String dateOperation,String idCompte, String idEmployer) throws Exception{

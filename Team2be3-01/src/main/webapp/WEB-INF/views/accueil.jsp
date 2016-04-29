@@ -9,7 +9,7 @@
 
 <title>Client</title>
 </head>
-<body>
+<body class="containeracceuil">
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<div class="collapse navbar-collapse"
