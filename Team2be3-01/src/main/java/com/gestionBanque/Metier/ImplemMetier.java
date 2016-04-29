@@ -132,9 +132,12 @@ public class ImplemMetier implements InterMetier {
 		dao.addOperation(new Retrait(dateOperation, montant), idCompte, idEmployer);
 		Compte c=dao.getCompte(idCompte);
 		double solde=c.getSolde()-montant;
-		//String s=c.getClass().toString();
-		//if (s.equals("class com.gestionBanque.entities.CompteCourant"))
-		if (solde<0) throw new Exception("Solde insuffisant");
+		if (c.getClass().getSimpleName().equals("CompteCourant")){
+			CompteCourant cc=dao.getCompteCourant(idCompte);
+			if (solde<-cc.getDecouvert()) throw new Exception("Solde insuffisant");
+			else cc.setSolde(solde);
+		}
+		else if (solde<0) throw new Exception("Solde insuffisant");
 		else c.setSolde(solde);
 	}
 

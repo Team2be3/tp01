@@ -17,6 +17,7 @@ import javax.persistence.Query;
 
 import com.gestionBanque.entities.Client;
 import com.gestionBanque.entities.Compte;
+import com.gestionBanque.entities.CompteCourant;
 import com.gestionBanque.entities.Employer;
 import com.gestionBanque.entities.Groupe;
 import com.gestionBanque.entities.Operation;
@@ -128,6 +129,13 @@ public class ImplemDao implements InterDao {
 	@Override
 	public Compte getCompte(Long idCompte) {
 		Compte c=em.find(Compte.class,idCompte);
+		return c;
+	}
+
+	@Override
+	public CompteCourant getCompteCourant(Long idCompte) {
+		// TODO Auto-generated method stub
+		CompteCourant c=em.find(CompteCourant.class,idCompte);
 		return c;
 	}	
 

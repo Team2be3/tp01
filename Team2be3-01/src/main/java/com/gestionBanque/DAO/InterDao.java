@@ -11,6 +11,7 @@ import java.util.List;
 
 import com.gestionBanque.entities.Client;
 import com.gestionBanque.entities.Compte;
+import com.gestionBanque.entities.CompteCourant;
 import com.gestionBanque.entities.Employer;
 import com.gestionBanque.entities.Groupe;
 import com.gestionBanque.entities.Operation;
@@ -32,5 +33,5 @@ public interface InterDao {
 	public List<Client> getListCliParMc(String mc);//obtient la liste des client dont le nom commence par mc
 	
 	public Compte getCompte(Long idCompte);// obtient un compte c
-	
+	public CompteCourant getCompteCourant(Long idCompte);
 }
