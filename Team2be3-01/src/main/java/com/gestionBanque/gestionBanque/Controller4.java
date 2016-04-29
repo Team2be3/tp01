@@ -40,7 +40,8 @@ public class Controller4 {
 				model.addAttribute("groupe", metier.getListGroupe());
 			}
 		}
-		model.addAttribute("message","nom incorrect");
+		model.addAttribute("message","Saisie incorrecte");
+		model.addAttribute("messageb",3);
 		return p;
     	
     }
