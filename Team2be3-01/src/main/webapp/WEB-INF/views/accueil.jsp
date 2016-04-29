@@ -32,7 +32,7 @@
 					<form class="form-signin" action="login" method="post">
 						<input type="text" class="form-control" name="id" placeholder="idEmployé" required autofocus>
 							 <input type="password" class="form-control" name="nom" placeholder="nomEmployé" required>					
-						<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+						<button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
 							
 					</form>
 				</div>
