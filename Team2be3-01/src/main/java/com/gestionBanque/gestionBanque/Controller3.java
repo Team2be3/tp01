@@ -46,6 +46,7 @@ public class Controller3 {
 	
 	@RequestMapping(value="/operationRetrait")
 	public String indexOperationRetrait(Model model,String montant, String dateOperation,String idCompte, String idEmployer) throws Exception{
+		String p="Employer";
 		try {
 			SimpleDateFormat sd=new SimpleDateFormat("yyyy-MM-dd");
 		    Date d1=sd.parse(dateOperation);
@@ -60,13 +61,14 @@ public class Controller3 {
 			Operation o=new Retrait();
 			o.setException(e.getMessage());
 			model.addAttribute("op", o);
+			p="Operation";
 		}
 	    
 		model.addAttribute("client", metier.getListCliParMc(""));
 		model.addAttribute("employer", metier.getListEmployer());
 		model.addAttribute("compte", metier.getListCompte());
 		model.addAttribute("groupe", metier.getListGroupe());
-    	return "Operation";
+    	return p;
     }
 	@RequestMapping(value="/operationVersement")
 	public String indexOperationVersement(Model model,String montant, String dateOperation,String idCompte, String idEmployer) throws Exception{
