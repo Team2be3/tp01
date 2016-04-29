@@ -20,7 +20,8 @@ public class Controller3 {
 	private InterMetier metier;
 	@RequestMapping(value="/operation")
 	public String indexOperation(Model model){
-    
+		model.addAttribute("compte", metier.getListCompte());
+		model.addAttribute("employer", metier.getListEmployer());
     	return "Operation";
 	}
 	
@@ -71,4 +72,7 @@ public class Controller3 {
 		model.addAttribute("groupe", metier.getListGroupe());
     	return "Employer";
     }
-}
+	
+	
+	}
+
