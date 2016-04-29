@@ -5,7 +5,7 @@ package com.gestionBanque.Metier;
  *date:26/04/2016
  *Package:com.gestionBanque.Metier
  *ImplemMetier
- *version:1. 
+ *version:1.  
  * */
 
 import java.util.Date;

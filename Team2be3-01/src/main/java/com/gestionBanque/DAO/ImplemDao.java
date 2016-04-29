@@ -134,7 +134,6 @@ public class ImplemDao implements InterDao {
 
 	@Override
 	public CompteCourant getCompteCourant(Long idCompte) {
-		// TODO Auto-generated method stub
 		CompteCourant c=em.find(CompteCourant.class,idCompte);
 		return c;
 	}	
