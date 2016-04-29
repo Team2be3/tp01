@@ -13,6 +13,7 @@
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
+				<li><a href="accueil">Accueil</a></li>
 					<li><a href="client">Client</a></li>
 					<li><a href="employer">Employer</a></li>
 					<li class="active"><a href="operation">Operation<span
@@ -28,7 +29,7 @@
 			<td>
 				<form action="operationVirement" method="post">
 					<table class="table">
-						<th>Virement</th>
+					<th>Virement</th>
 						<tr>
 							<td>Date de l'operation</td>
 							<td><input type="text" name="dateOperation"></td>
@@ -49,7 +50,7 @@
 							<td><input type="text" name="idEmployer"></td>
 						</tr>
 						<tr>
-							<td><input type="submit" value="valider"></td>
+							<td><button type="submit" class="btn btn-success">Valider</button></td>
 						</tr>
 					</table>
 				</form>
@@ -76,7 +77,7 @@
 							<td><input type="text" name="idEmployer"></td>
 						</tr>
 						<tr>
-							<td><input type="submit" value="valider"></td>
+							<td><button type="submit" class="btn btn-success">Valider</button></td>
 						</tr>
 					</table>
 				</form>
@@ -103,7 +104,7 @@
 							<td><input type="text" name="idEmployer"></td>
 						</tr>
 						<tr>
-							<td><input type="submit" value="valider"></td>
+							<td><button type="submit" class="btn btn-success">Valider</button></td>
 						</tr>
 					</table>
 				</form>

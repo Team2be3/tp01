@@ -14,10 +14,9 @@
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
+				<li><a href="accueil">Accueil</a></li>
 					<li class="active"><a href="client">Client<span
 							class="sr-only">(current)</span></a></li>
-					<li><a href="employer">Employer</a></li>
-					<li><a href="operation">Operation</a></li>
 				</ul>
 				<form action="clientMC" method="post"
 					class="navbar-form navbar-left">

@@ -15,6 +15,7 @@
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
+				<li><a href="accueil">Accueil</a></li>
 					<li><a href="client">Client</a></li>
 					<li class="active"><a href="employer">Employer<span class="sr-only">(current)</span></a></li>
 					<li><a href="operation">Operation</a></li>
