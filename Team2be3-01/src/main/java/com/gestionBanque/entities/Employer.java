@@ -12,6 +12,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 /*Auteur:Loic Loichot
  * nom Projet:Team2be3
  *date:26/04/2016
@@ -26,6 +28,7 @@ public class Employer {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 private Long idEmployer;
+@NotEmpty
 private String nomEmployer;
 @OneToMany(mappedBy="employe")
 private List<Operation> tabOperation=new ArrayList<Operation>();

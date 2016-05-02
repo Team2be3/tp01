@@ -4,9 +4,13 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.gestionBanque.Metier.InterMetier;
@@ -29,30 +33,30 @@ public class Controller2 {
 		model.addAttribute("compte", metier.getListCompte());
 		model.addAttribute("groupe", metier.getListGroupe());
 		
+		model.addAttribute("ajoutemp", new Employer());
+		
     	return "Employer";
     }
 	
 	@RequestMapping(value="/insererClient")
-	public String insererClient(Model model, String nomClient, String prenomClient, String dateNaissance, String adresse) throws ParseException{
-		SimpleDateFormat SDF=new SimpleDateFormat("yyyy-MM-dd");
-		Date dateNaisb=SDF.parse(dateNaissance);
-		metier.addClient(new Client(nomClient, prenomClient, dateNaisb, adresse));
-		
+	public String insererClient(Model model, String nomClient, String prenomCLient,
+								String dateNaissance, String adresse,BindingResult resultat) throws ParseException{
 		
 		model.addAttribute("client", metier.getListCliParMc(""));
 		model.addAttribute("employer", metier.getListEmployer());
 		model.addAttribute("compte", metier.getListCompte());
 		model.addAttribute("groupe", metier.getListGroupe());
-    	return "Employer";
+		
+		SimpleDateFormat SDF=new SimpleDateFormat("yyyy-MM-dd");
+		Date dateNaisb=SDF.parse(dateNaissance);
+		metier.addClient(new Client(nomClient, prenomCLient, dateNaisb, adresse));
+		
+    	return "redirect:employer";
     }
 	
 	@RequestMapping(value="/insererCompteCourant")
-	public String insererCompteCourant(Model model, String solde, String decouvert, String idClient, String idEmployer){
-		double soldeb= Double.parseDouble(solde);
-		double decouvertb= Double.parseDouble(decouvert);
-		Long idC=Long.parseLong(idClient);
-		Long idE=Long.parseLong(idEmployer);
-		metier.addCompte(new CompteCourant(soldeb, new Date(), decouvertb), idC, idE);
+	public String insererCompteCourant(Model model, double solde, double decouvert, Long idClient, Long idEmployer){
+		metier.addCompte(new CompteCourant(solde, new Date(), decouvert), idClient, idEmployer);
 		
 		model.addAttribute("client", metier.getListCliParMc(""));
 		model.addAttribute("employer", metier.getListEmployer());
@@ -62,12 +66,8 @@ public class Controller2 {
     }
 	
 	@RequestMapping(value="/insererCompteEpargne")
-	public String insererCompteEpargne(Model model, String solde, String tauxInt, String idClient, String idEmployer){
-		double soldeb= Double.parseDouble(solde);
-		double tauxIntb= Double.parseDouble(tauxInt);
-		Long idC=Long.parseLong(idClient);
-		Long idE=Long.parseLong(idEmployer);
-		metier.addCompte(new CompteEpargne(soldeb, new Date(), tauxIntb), idC, idE);
+	public String insererCompteEpargne(Model model, double solde, double tauxInt, Long idClient, Long idEmployer){
+		metier.addCompte(new CompteEpargne(solde, new Date(), tauxInt), idClient, idEmployer);
 		
 		model.addAttribute("client", metier.getListCliParMc(""));
 		model.addAttribute("employer", metier.getListEmployer());
@@ -98,14 +98,19 @@ public class Controller2 {
     }
 	
 	@RequestMapping(value="/ajouterEmployer")
-	public String ajouterEmployer(Model model, Employer e){
-		metier.addEmployer(e);
+	public String ajouterEmployer(Model model,@ModelAttribute("ajoutemp") @Valid Employer e,BindingResult resultat){
+		
 		
 		model.addAttribute("client", metier.getListCliParMc(""));
 		model.addAttribute("employer", metier.getListEmployer());
 		model.addAttribute("compte", metier.getListCompte());
 		model.addAttribute("groupe", metier.getListGroupe());
-    	return "Employer";
+		
+		if(resultat.hasErrors()){
+			return "Employer";
+		}
+		metier.addEmployer(e);
+    	return "redirect:employer";
     }
 	
 	@RequestMapping(value="/ajouterGroupe")
@@ -120,10 +125,8 @@ public class Controller2 {
     }
 	
 	@RequestMapping(value="/ajouterEmplGro")
-	public String ajouterEmplGro(Model model, String idEmployer, String idGroupe){
-		Long idE=Long.parseLong(idEmployer);
-		Long idG=Long.parseLong(idGroupe);
-		metier.addEmpToGro(idE, idG);
+	public String ajouterEmplGro(Model model, Long idEmployer, Long idGroupe){
+		metier.addEmpToGro(idEmployer, idGroupe);
 		
 		model.addAttribute("client", metier.getListCliParMc(""));
 		model.addAttribute("employer", metier.getListEmployer());

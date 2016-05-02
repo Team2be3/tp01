@@ -1,10 +1,12 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" type="text/css"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/accueil.css">
 
 
 <title>Employer</title>
@@ -19,6 +21,7 @@
 					<li><a href="client">Client</a></li>
 					<li class="active"><a href="employer">Employer<span class="sr-only">(current)</span></a></li>
 					<li><a href="operation">Operation</a></li>
+				<li><a href="j_spring_security_logout">Déconnection</a></li>
 				</ul>
 			</div>
 		</div>
@@ -38,7 +41,7 @@
 							</tr>
 							<tr>
 								<td>Prénom client:</td>
-								<td><input type="text" name="prenomClient"></td>
+								<td><input type="text" name="prenomCLient"></td>
 							</tr>
 							<tr>
 								<td>Date de naissance:</td>
@@ -207,18 +210,19 @@
 		<table class="table">
 			<tr>
 <!-- Ajouter employer -->
-				<td><form action="ajouterEmployer" method="post">
+<%-- 				<td><f:form action="ajouterEmployer" method="post" modelAttribute="ajoutemp">
 						<table class="table">
 							<th>Ajouter un employe :</th>
 							<tr>
 								<td>Nom de l'employe</td>
-								<td><input type="text" name="nomEmployer"></td>
+								<td><f:input type="text" path="nomEmployer"/></td>
+								<td><f:errors cssClass="erreur" path="nomEmployer"></f:errors></td>
 							</tr>
 							<tr>
 								<td><button type="submit" class="btn btn-primary">Ajouter</button></td>
 							</tr>
 						</table>
-					</form></td>
+					</f:form></td> --%>
 <!-- Ajouter groupe -->
 				<td><form action="ajouterGroupe" method="post">
 						<table class="table">

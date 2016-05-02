@@ -12,6 +12,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 /*Auteur:Loic Loichot
  * nom Projet:Team2be3
  *date:26/04/2016
@@ -26,10 +28,13 @@ public class Client {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 private Long idClient;
+@NotEmpty
 private String nomClient;    //Attributs
+@NotEmpty
 private String prenomCLient;
 @Temporal(TemporalType.DATE)
 private Date dateNaissance;
+@NotEmpty
 private String adresse;
 @OneToMany(mappedBy="client")
 private List<Compte> tabCompte=new ArrayList<Compte>();

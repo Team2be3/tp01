@@ -27,7 +27,7 @@ public class Controller4 {
 		//
     	return "accueil";
     }
-	@RequestMapping(value="/login")
+	@RequestMapping(value="/loginb")
 	public String login(Model model, String id, String nom){
 		Long id1=Long.parseLong(id);
 		String p="accueil";
